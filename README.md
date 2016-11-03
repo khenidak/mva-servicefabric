@@ -1,11 +1,13 @@
 # Service Fabric Migration Demos
-This sample code was used in [Microsoft Virtual Acadamy Service Fabric Live Event] (https://mva.microsoft.com/liveevents/azure-service-fabric-patterns-and-practices) Migration Session. The code consists of:
+This sample code was used in [Microsoft Virtual Academy Service Fabric Live Event] (https://mva.microsoft.com/liveevents/azure-service-fabric-patterns-and-practices) Migration Session. The code consists of:
 
 1. Simple Web Application 
 2. Web App + single instance Compute 
 3. Web App connecting to a backend service (with internal load balancer) + single instance Compute + Service Fabric health reporting.
 
 All applications are running as is (Service Fabric Guest Executable). Please view the session for more details. 
+
+> note: I am not maintaining this repo, Its here for reference only.
 
 
 # Deploying/Removing app applications
@@ -52,4 +54,4 @@ curl http://localhost.cloudapp.azure.com:9001/index.html # routed to express sta
 # Additional Resources
 
 1. Creating Azure internal load balancer using Azure CLI [](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-get-started-ilb-arm-cli/)
-2. Follow these steps to add additional load balancer to VMSS network profie [](http://jasonpoon.ca/2016/08/23/adding-a-load-balancer-to-your-virtual-machine-scale-set/) 
+2. Follow these steps to add additional load balancer to VMSS network profile [](http://jasonpoon.ca/2016/08/23/adding-a-load-balancer-to-your-virtual-machine-scale-set/) 
