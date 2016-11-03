@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     ApplicationTypeName="PortalAppType" 
+                     ApplicationTypeVersion="1.0.0.0" 
+                     xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="FESvc" ServiceManifestVersion="1.0.0.0" />
+      <ConfigOverrides />
+      <Policies>
+            <RunAsPolicy CodePackageRef="Code" UserRef="SetupAdminUser" EntryPointType="Setup" />
+      </Policies>
+   </ServiceManifestImport>
+
+    <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="BESvc" ServiceManifestVersion="1.0.0.0" />
+      <ConfigOverrides />
+      <Policies>
+            <RunAsPolicy CodePackageRef="Code" UserRef="SetupAdminUser" EntryPointType="Setup" />
+      </Policies>
+   </ServiceManifestImport>
+
+   <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ComputeSvc" ServiceManifestVersion="1.0.0.0" />
+      <ConfigOverrides />
+      <Policies>
+            <RunAsPolicy CodePackageRef="Code" UserRef="SetupAdminUser" EntryPointType="Setup" />
+      </Policies>
+   </ServiceManifestImport>
+   
+   <DefaultServices>
+      <Service Name="WebFe">
+         <StatelessService ServiceTypeName="FESvcType" InstanceCount="3">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
+      <Service Name="Backend">
+         <StatelessService ServiceTypeName="BESvcType" InstanceCount="3">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
+       <Service Name="ComputeSvc">
+         <StatelessService ServiceTypeName="ComputeSvcType" InstanceCount="1">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
+   </DefaultServices>
+   <Principals>
+    <Users>
+        <User Name="SetupAdminUser">
+            <MemberOf>
+                <SystemGroup Name="Administrators" />
+            </MemberOf>
+        </User>
+    </Users>
+   </Principals>
+</ApplicationManifest>
